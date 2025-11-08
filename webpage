@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women in Video Games</title>
+    <style>
+      :root {
+        --primary: #8e44ad;
+        --secondary: #ff89f7;
+        --light: #fdf8ff;
+        --dark: #333;
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #fce4f9, #ffffff);
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* ----------- FLOATING ICONS ----------- */
+      .icon {
+        position: absolute;
+        font-size: 30px;
+        color: var(--secondary);
+        opacity: 1;
+        animation: float 10s linear infinite;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0.8;
+        }
+        to {
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* ----------- NAVIGATION ----------- */
+      nav {
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 17px;
+        transition: color 0.3s, transform 0.2s;
+        position: relative;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0%;
+        height: 3px;
+        background: #fff;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #ffe9fb;
+        transform: translateY(-2px);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* ----------- HERO SECTION ----------- */
+      .hero {
+        text-align: center;
+        overflow: hidden;
+        margin-top: 0;
+        position: relative;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 70vh;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.8);
+      }
+
+      .overlay {
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+        color: white;
+        padding: 25px 20px;
+        border-radius: 0 0 var(--radius) var(--radius);
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .overlay:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px var(--secondary);
+      }
+
+      /* ----------- SECTION STYLING ----------- */
+      section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(6px);
+        border-radius: var(--radius);
+        margin: 80px auto;
+        padding: 60px 40px;
+        max-width: 900px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        opacity: 1;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      h1 {
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 18px;
+        max-width: 720px;
+        margin: 0 auto;
+        color: #444;
+      }
+
+      /* ----------- FOOTER ----------- */
+      footer {
+        background: var(--primary);
+        color: white;
+        text-align: center;
+        padding: 25px 10px;
+        margin-top: 80px;
+        font-size: 16px;
+      }
+
+      footer a {
+        color: #ffe9fb;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* ----------- CURSOR SPARKLE ----------- */
+      .sparkle {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: var(--secondary);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: sparkleFade 0.8s ease-out forwards;
+      }
+
+      @keyframes sparkleFade {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+      }
+
+      /* ----------- RESPONSIVE ----------- */
+      @media (max-width: 700px) {
+        nav ul {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .overlay {
+          font-size: 1.4rem;
+          padding: 20px;
+        }
+
+        section {
+          padding: 40px 20px;
+          margin: 50px 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Icons (background fun) -->
+    <div class="icon" style="left:5%;">🎮</div>
+    <div class="icon" style="left:20%; animation-delay: 2s;">⭐</div>
+    <div class="icon" style="left:40%; animation-delay: 4s;">💖</div>
+    <div class="icon" style="left:70%; animation-delay: 6s;">🎲</div>
+    <div class="icon" style="left:90%; animation-delay: 8s;">⚡</div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#info">Information</a></li>
+        <li><a href="#why">Why Care?</a></li>
+        <li><a href="#action">Take Action</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+      <img src="image.png" alt="Women in video games awareness">
+      <div class="overlay" id="title">Equality Isn’t Optional</div>
+    </div>
+
+    <!-- Sections -->
+    <section id="info">
+      <h1>Discrimination in Video Games</h1>
+      <p>
+        TBD (to be discussed).
+      </p>
+    </section>
+
+    <section id="why">
+      <h1>Why This Matters</h1>
+      <p>
+        TBD (to be discussed).
+      </p>
+    </section>
+
+    <section id="action">
+      <h1>How You Can Help</h1>
+      <p>
+        TBD (to be discussed).
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        © 2025 Equality In Gaming For Women |
+        <a href="#">Learn More</a>
+      </p>
+    </footer>
+
+    <!-- JavaScript for fun effects -->
+  </body>
+</html>
